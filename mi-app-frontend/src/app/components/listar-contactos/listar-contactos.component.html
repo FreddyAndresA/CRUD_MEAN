@@ -1,0 +1,37 @@
+<div class="container my-5 p-5 shadow-lg rounded">
+    <h1 class="text-danger display-4 text-center mb-5">Mis Contactos</h1>
+
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-hover table-striped" *ngIf="listadoContactos.length > 0">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Celular</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">Ciudad</th>
+                        <th scope="col">Dirección</th>
+                        <th scope="col">Categoría</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let contacto of listadoContactos">
+                        <td>{{ contacto.nombre }}</td>
+                        <td>{{ contacto.email }}</td>
+                        <td>{{ contacto.telefono1 }}</td>
+                        <td>{{ contacto.telefono2 }}</td>
+                        <td>{{ contacto.ciudad }}</td>
+                        <td>{{ contacto.direccion }}</td>
+                        <td>{{ contacto.categoria }}</td>
+                        <td>
+                            <i class="fa-solid fa-user-pen text-primary fs-4 me-2" role="button" [routerLink]="['/editar-contacto', contacto._id]"></i>
+                            <i class="fa-solid fa-ban text-danger fs-4 ms-2" role="button" (click)="eliminarContacto(contacto._id)"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="text-danger fw-bold text-center" *ngIf="listadoContactos.length === 0">No hay contactos registrados</h2>
+        </div>
+    </div>
+</div>

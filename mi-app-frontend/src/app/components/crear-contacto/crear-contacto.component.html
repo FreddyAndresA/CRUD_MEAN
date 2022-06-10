@@ -1,0 +1,60 @@
+<div class="container my-5">
+    <form class="form p-5 shadow-lg rounded" [formGroup]="contactForm" (ngSubmit)="crearContacto()">
+        
+        <!-- Titulo -->
+        <h1 class="text-danger display-4 text-center mb-5">{{ tituloFormulario }}</h1>
+        
+        <!-- Fila 1 -->
+        <div class="row">
+            <div class="form-floating col-12 col-lg-6 my-2">
+                <input type="text" class="form-control" id="nombre" placeholder="Nombre" formControlName="nombre">
+                <label  class="mx-2 text-primary" for="nombre">Nombre</label>
+                <span *ngIf="contactForm.get('nombre')?.hasError('required') && contactForm.get('nombre')?.touched" class="text-danger fs-6 fw-lighter">El nombre del contacto es obligatorio</span>
+            </div>
+            <div class="form-floating col-12 col-lg-6 my-2">
+                <input type="email" class="form-control" id="email" placeholder="Correo Electrónico" formControlName="email">
+                <label  class="mx-2 text-primary" for="email">Correo Electrónico</label>
+                <span *ngIf="contactForm.get('email')?.hasError('required') && contactForm.get('email')?.touched" class="text-danger fs-6 fw-lighter">El correo electrónico del contacto es obligatorio</span>
+                <span *ngIf="contactForm.get('email')?.hasError('pattern')" class="text-danger fs-6 fw-lighter">El correo electrónico del contacto es invalido</span>
+            </div>
+        </div>
+        
+        <!-- Fila 2 -->
+        <div class="row">
+            <div class="form-floating col-12 col-lg-6 my-2">
+                <input type="text" class="form-control" id="telefono1" placeholder="Celular" formControlName="telefono1">
+                <label  class="mx-2 text-primary" for="telefono1">Número Celular</label>
+                <span *ngIf="contactForm.get('telefono1')?.hasError('required') && contactForm.get('telefono1')?.touched" class="text-danger fs-6 fw-lighter">El número celular del contacto es obligatorio</span>
+            </div>
+            <div class="form-floating col-12 col-lg-6 my-2">
+                <input type="text" class="form-control" id="telefono2" placeholder="Teléfono*" formControlName="telefono2">
+                <label  class="mx-2 text-primary" for="telefono2">Teléfono*</label>
+            </div>
+        </div>
+        
+        <!-- Fila 3 -->
+        <div class="row">
+            <div class="form-floating col-12 col-lg-6 my-2">
+                <input type="text" class="form-control" id="ciudad" placeholder="Ciudad" formControlName="ciudad">
+                <label  class="mx-2 text-primary" for="ciudad">Ciudad</label>
+                <span *ngIf="contactForm.get('ciudad')?.hasError('required') && contactForm.get('ciudad')?.touched" class="text-danger fs-6 fw-lighter">La ciudad del contacto es obligatoria</span>
+            </div>
+            <div class="form-floating col-12 col-lg-6 my-2">
+                <input type="text" class="form-control" id="direccion" placeholder="Dirección" formControlName="direccion">
+                <label  class="mx-2 text-primary" for="direccion">Dirección</label>
+                <span *ngIf="contactForm.get('direccion')?.hasError('required') && contactForm.get('direccion')?.touched" class="text-danger fs-6 fw-lighter">La dirección del contacto es obligatoria</span>
+            </div>
+        </div>
+        
+        <!-- Fila 4 -->
+        <div class="row">
+            <div class="form-floating col-12 col-lg-6 my-2">
+                <input type="text" class="form-control" id="categoria" placeholder="Categoría*" formControlName="categoria">
+                <label  class="mx-2 text-primary" for="categoria">Categoría*</label>
+            </div>
+        </div>
+
+        <!-- Boton -->
+        <button type="submit" class="btn btn-danger d-block w-25 mx-auto mt-4" [disabled]="contactForm.invalid" >Guardar Contacto</button>
+    </form>
+</div>
